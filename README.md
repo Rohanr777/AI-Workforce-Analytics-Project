@@ -54,8 +54,8 @@ Features:
 - Work Model Distribution
 
 ### Preview
-![Project Overview](<img width="1661" height="960" alt="image" src="https://github.com/user-attachments/assets/f5693881-f3b5-41ef-91b2-6af058d52696" />
-)
+![Project Overview]<img width="1661" height="960" alt="image" src="https://github.com/user-attachments/assets/f5693881-f3b5-41ef-91b2-6af058d52696" />
+
 
 ---
 
