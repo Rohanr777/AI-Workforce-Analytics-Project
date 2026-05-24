@@ -1,7 +1,7 @@
 # AI Workforce Analytics Project
 
-![Dashboard Preview](<img width="1384" height="927" alt="image" src="https://github.com/user-attachments/assets/ae63a38d-623d-4baf-bf9a-4e39173c5f24" />
-)
+![Dashboard Preview]<img width="1384" height="927" alt="image" src="https://github.com/user-attachments/assets/ae63a38d-623d-4baf-bf9a-4e39173c5f24" />
+
 
 ## Overview
 The AI Workforce Analytics Project is a Tableau-based analytics project that analyzes the impact of AI adoption and automation on workforce trends, layoffs, employee satisfaction, productivity, and regional workforce risks.
