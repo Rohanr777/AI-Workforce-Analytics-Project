@@ -23,8 +23,8 @@ body{
 header{
   background:#111;
   color:white;
-  padding:20px;
   text-align:center;
+  padding:20px;
 }
 
 nav{
@@ -32,7 +32,7 @@ nav{
   justify-content:center;
   flex-wrap:wrap;
   gap:10px;
-  padding:15px;
+  padding:20px;
   background:white;
 }
 
@@ -41,8 +41,8 @@ nav button{
   border:none;
   background:#222;
   color:white;
-  cursor:pointer;
   border-radius:5px;
+  cursor:pointer;
   transition:0.3s;
 }
 
@@ -50,20 +50,19 @@ nav button:hover{
   background:#555;
 }
 
-.dashboard{
-  display:none;
+#tableauViz{
   width:100%;
-  height:90vh;
+  height:1400px;
 }
 
-.dashboard.active{
-  display:block;
-}
-
-iframe{
+.tableauPlaceholder{
   width:100%;
   height:100%;
-  border:none;
+}
+
+.tableauViz{
+  width:100%;
+  height:100%;
 }
 
 </style>
@@ -76,71 +75,63 @@ iframe{
 </header>
 
 <nav>
-  <button onclick="showDashboard('d1')">Overview</button>
 
-  <button onclick="showDashboard('d2')">
-    AI Workforce
-  </button>
+<button onclick="loadViz('ProjectOverview')">
+Overview
+</button>
 
-  <button onclick="showDashboard('d3')">
-    Layoff Risk
-  </button>
+<button onclick="loadViz('AIWorkforceAnalyticsOverview')">
+AI Workforce
+</button>
 
-  <button onclick="showDashboard('d4')">
-    AI Automation
-  </button>
+<button onclick="loadViz('WorkforceLayoffRiskAnalysisDashboard')">
+Layoff Risk
+</button>
 
-  <button onclick="showDashboard('d5')">
-    Workplace Insights
-  </button>
+<button onclick="loadViz('AIAutomationImpactAnalysis')">
+AI Automation
+</button>
 
-  <button onclick="showDashboard('d6')">
-    Final Insights
-  </button>
+<button onclick="loadViz('EmployeeWorkplaceInsights')">
+Workplace
+</button>
+
+<button onclick="loadViz('DashboardInsights')">
+Final Insights
+</button>
+
 </nav>
 
-<!-- Dashboard 1 -->
-<div id="d1" class="dashboard active">
-<iframe src="https://public.tableau.com/views/AIWorkforceAnalyticsProject/ProjectOverview?:showVizHome=no"></iframe>
-</div>
+<div id="tableauViz"></div>
 
-<!-- Dashboard 2 -->
-<div id="d2" class="dashboard">
-<iframe src="https://public.tableau.com/views/AIWorkforceAnalyticsProject/AIWorkforceAnalyticsOverview?:showVizHome=no"></iframe>
-</div>
-
-<!-- Dashboard 3 -->
-<div id="d3" class="dashboard">
-<iframe src="https://public.tableau.com/views/AIWorkforceAnalyticsProject/WorkforceLayoffRiskAnalysisDashboard?:showVizHome=no"></iframe>
-</div>
-
-<!-- Dashboard 4 -->
-<div id="d4" class="dashboard">
-<iframe src="https://public.tableau.com/views/AIWorkforceAnalyticsProject/AIAutomationImpactAnalysis?:showVizHome=no"></iframe>
-</div>
-
-<!-- Dashboard 5 -->
-<div id="d5" class="dashboard">
-<iframe src="https://public.tableau.com/views/AIWorkforceAnalyticsProject/EmployeeWorkplaceInsights?:showVizHome=no"></iframe>
-</div>
-
-<!-- Dashboard 6 -->
-<div id="d6" class="dashboard">
-<iframe src="https://public.tableau.com/views/AIWorkforceAnalyticsProject/DashboardInsights?:showVizHome=no"></iframe>
-</div>
+<script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
 
 <script>
 
-function showDashboard(id){
+let viz;
 
-  let dashboards=document.querySelectorAll('.dashboard');
+function loadViz(sheetName){
 
-  dashboards.forEach(d=>{
-    d.classList.remove('active');
-  });
+  const containerDiv = document.getElementById("tableauViz");
 
-  document.getElementById(id).classList.add('active');
+  const url =
+  `https://public.tableau.com/views/AIWorkforceAnalyticsProject/${sheetName}?:showVizHome=no`;
+
+  if(viz){
+    viz.dispose();
+  }
+
+  const options = {
+    width: "100%",
+    height: "1400px",
+    hideTabs: true,
+    hideToolbar: false
+  };
+
+  viz = new tableau.Viz(containerDiv, url, options);
 }
+
+loadViz('ProjectOverview');
 
 </script>
 
